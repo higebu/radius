@@ -90,7 +90,7 @@ func (s *PacketServer) logf(format string, args ...interface{}) {
 // Serve accepts incoming connections on conn.
 func (s *PacketServer) Serve(conn net.PacketConn) error {
 	if s.Handler == nil {
-		return errors.New("radius: nil Handler")
+		s.Handler = DefaultServeMux
 	}
 	if s.SecretSource == nil {
 		return errors.New("radius: nil SecretSource")
